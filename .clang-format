@@ -1,0 +1,50 @@
+---
+# Default rules
+BasedOnStyle: LLVM
+ColumnLimit: 120
+IndentWidth: 4
+UseTab: Never
+---
+# C++ rules
+Language: Cpp
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AlignEscapedNewlines: Left
+AllowAllArgumentsOnNextLine: true # 'false' has different behavior between clang-format 11 and 12, therefore use 'true'.
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Attach
+BreakConstructorInitializers: BeforeComma
+CommentPragmas: '^.*'
+ConstructorInitializerIndentWidth: 8
+DerivePointerAlignment: false
+MaxEmptyLinesToKeep: 2
+NamespaceIndentation: None
+PackConstructorInitializers: CurrentLine
+PointerAlignment: Left
+SpaceAfterCStyleCast: true
+SpaceAfterTemplateKeyword: false
+Standard: c++17
+# TODO Does not work reliable, yet. Do not use in automatic CI pipeline!
+# Relies on having <> vs. "" correctly set, is missing POSIX/Win32 headers and other edge cases.
+# Uncomment to use locally for at least semi automated fixup.
+#IncludeBlocks: Regroup
+#IncludeCategories:
+#  # C headers (https://en.cppreference.com/w/cpp/header)
+#  - Regex:    '<(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|stdalign|stdarg|stdatomic|stdbool|stddef|stdint|stdio|stdlib|string|tgmath|time|uchar|wchar|wctype)\.h>'
+#    Priority: 1
+#  # C++ headers: assume <>, no slash, no extension
+#  - Regex:    '<([A-Za-z0-9_])+>'
+#    Priority: 2
+#  # Library headers: all other assume <>
+#  - Regex:    '<([A-Za-z0-9./_-])+>'
+#    Priority: 3
+#  # Local headers: assume ""
+#  - Regex:    '"([A-Za-z0-9./_-])+"'
+#    Priority: 4
+...
