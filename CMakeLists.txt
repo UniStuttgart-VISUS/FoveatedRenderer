@@ -24,10 +24,11 @@ set(ENV{VCPKG_FORCE_DOWNLOADED_BINARIES} ON)
 project(foveatedrenderer)
 
 file(GLOB_RECURSE sources src/*.cpp src/*.h)
+file(GLOB_RECURSE glad_sources glad/src/*.c glad/include/*.h)
 
-add_executable(foveatedrenderer ${sources})
+add_executable(foveatedrenderer ${sources} ${glad_sources})
 
-target_include_directories(foveatedrenderer PUBLIC src)
+target_include_directories(foveatedrenderer PUBLIC src glad/include)
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glm REQUIRED)
